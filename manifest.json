@@ -1,0 +1,16 @@
+  {
+    "name": "Welcome to gradeFetcher",
+    "description": "Your go to for fetching your grades and inputtin them in a seperate grade book.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "gradeFetcher.html",
+      "default_icon": "fetcher.jpg"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": ["script.js"],
+        "matches": ["http://*/*", "https://*/*"]
+      }
+    ]
+  }
