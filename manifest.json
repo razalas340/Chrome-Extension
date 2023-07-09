@@ -5,7 +5,7 @@
     "manifest_version": 3,
     "action": {
       "default_popup": "gradeFetcher.html",
-      "default_icon": "fetcher.jpg"
+      "default_icon": "fetcher.png"
     },
     "web_accessible_resources": [
       {
