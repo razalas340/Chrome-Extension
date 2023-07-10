@@ -1,6 +1,6 @@
 {
   "name": "Welcome to gradeFetcher",
-  "description": "Your go to for fetching your grades and inputting them in a separate grade book.",
+  "description": "Your go-to for fetching your grades and inputting them in a separate grade book.",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
@@ -14,9 +14,7 @@
     }
   ],
   "permissions": [
-    "tabs"
-  ],
-  "background": {
-    "service_worker": "background.js"
-  }
+    "scripting",
+    "activeTab"
+  ]
 }
