@@ -1,16 +1,19 @@
-  {
-    "name": "Welcome to gradeFetcher",
-    "description": "Your go to for fetching your grades and inputtin them in a seperate grade book.",
-    "version": "1.0",
-    "manifest_version": 3,
-    "action": {
-      "default_popup": "gradeFetcher.html",
-      "default_icon": "fetcher.png"
-    },
-    "web_accessible_resources": [
-      {
-        "resources": ["script.js"],
-        "matches": ["http://*/*", "https://*/*"]
-      }
-    ]
-  }
+{
+  "name": "Welcome to gradeFetcher",
+  "description": "Your go to for fetching your grades and inputting them in a separate grade book.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "gradeFetcher.html",
+    "default_icon": "fetcher.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["script.js"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ]
+}
