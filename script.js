@@ -1,30 +1,60 @@
+// function displayGrades() {
+//     const gradeInputs = document.querySelectorAll(".u7S8tc .ksaOtd");
+  
+//     // Create an array to store the grade values
+//     const gradeValues = [];
+  
+//     //iterate through the values and push them to the gradeValues array
+//     gradeInputs.forEach((gradeInput) => gradeValues.push(gradeInput.outerText));
+  
+//     // Get the container element to display the grades
+//     const gradesContainer = document.getElementById('gradesContainer');
+  
+//     // Clear any previous content
+//     gradesContainer.innerHTML = '';
+  
+//     // Create a paragraph for each grade and append it to the container
+//     gradeValues.forEach((grade) => {
+//       const gradeParagraph = document.createElement('p');
+//       gradeParagraph.textContent = `Grade: ${grade}`;
+//       gradesContainer.appendChild(gradeParagraph);
+//     });
+//   }
+  
+//   document.addEventListener('DOMContentLoaded', function() {
+//     // Get the button element by its ID
+//     var button = document.getElementById('gradesButton');
+  
+//     // Add event listener to the button
+//     button.addEventListener('click', displayGrades);
+//   });
+
 function displayGrades() {
-    const gradeInputs = document.querySelectorAll(".u7S8tc .ksaOtd");
-  
-    // Create an array to store the grade values
-    const gradeValues = [];
-  
-    //iterate through the values and push them to the gradeValues array
-    gradeInputs.forEach((gradeInput) => gradeValues.push(gradeInput.outerText));
-  
-    // Get the container element to display the grades
-    const gradesContainer = document.getElementById('gradesContainer');
-  
-    // Clear any previous content
-    gradesContainer.innerHTML = '';
-  
-    // Create a paragraph for each grade and append it to the container
-    gradeValues.forEach((grade) => {
-      const gradeParagraph = document.createElement('p');
-      gradeParagraph.textContent = `Grade: ${grade}`;
-      gradesContainer.appendChild(gradeParagraph);
-    });
-  }
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    // Get the button element by its ID
-    var button = document.getElementById('gradesButton');
-  
-    // Add event listener to the button
-    button.addEventListener('click', displayGrades);
-  });
+  // Execute a content script in the active tab
+  chrome.tabs.executeScript(
+    { code: `
+      const gradeInputs = document.querySelectorAll(".u7S8tc .ksaOtd");
+
+      // Create an array to store the grade values
+      const gradeValues = [];
+
+      // Iterate through the values and push them to the gradeValues array
+      gradeInputs.forEach((gradeInput) => gradeValues.push(gradeInput.textContent));
+
+      // Send the grade values back to the extension
+      chrome.runtime.sendMessage({ grades: gradeValues });
+    ` },
+    function (result) {
+      // Handle the response from the content script, if needed
+      // ...
+    }
+  );
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Get the button element by its ID
+  var button = document.getElementById('gradesButton');
+
+  // Add event listener to the button
+  button.addEventListener('click', displayGrades);
+});
