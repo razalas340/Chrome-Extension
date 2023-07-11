@@ -7,10 +7,11 @@ function displayGrades() {
     // Iterate through the values and push them to the gradeValues array
     gradeInputs.forEach((gradeInput) => gradeValues.push(gradeInput.textContent));
   
-    // Send the grade values back to the extension's background script
+    // Send the grade values to the extension's popup
     chrome.runtime.sendMessage({ grades: gradeValues });
   }
   
+  // Listen for messages from the extension's popup
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'displayGrades') {
       displayGrades();
