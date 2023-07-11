@@ -1,9 +1,8 @@
-chrome.action.onClicked.addListener(function(tab) {
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      files: ['script.js']
-    }, function (result) {
-      // Handle the response from the content script, if needed
-      // ...
+chrome.action.onClicked.addListener(async () => {
+    const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  
+    await chrome.scripting.executeScript({
+      target: { tabId: activeTab.id },
+      files: ['script.js'],
     });
   });
